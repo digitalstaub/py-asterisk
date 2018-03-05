@@ -2,7 +2,7 @@
 '''
 Asterisk Manager and Channel objects.
 '''
-from __future__ import absolute_import
+
 
 import datetime
 import re
@@ -263,7 +263,7 @@ class BaseManager(Asterisk.Logging.InstanceLogger):
         lines = ['Action: ' + action, 'ActionID: ' + id]
 
         if data is not None:
-            for item in data.items():
+            for item in list(data.items()):
                 if item[1] is not None:
                     if not isinstance(item[1], list):
                         lines.append('%s: %s' % item)

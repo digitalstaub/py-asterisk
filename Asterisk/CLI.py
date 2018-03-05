@@ -6,8 +6,8 @@ Asterisk/CLI.py: Command-line wrapper around the Asterisk Manager API.
 
 # pylint: disable=W0710
 
-from __future__ import absolute_import
-from __future__ import print_function
+
+
 
 import inspect
 import os

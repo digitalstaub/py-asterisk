@@ -1,7 +1,7 @@
 '''
 Asterisk/Util.py: utility classes.
 '''
-from __future__ import absolute_import
+
 
 
 import sys
@@ -55,7 +55,7 @@ class AttributeDict(dict):
         self[key] = value
 
     def copy(self):
-        return AttributeDict(iter(self.items()))
+        return AttributeDict(iter(list(self.items())))
 
 
 class EventCollection(Logging.InstanceLogger):
@@ -119,7 +119,7 @@ class EventCollection(Logging.InstanceLogger):
     def copy(self):
         new = self.__class__()
 
-        for name, subscriptions in self.subscriptions.items():
+        for name, subscriptions in list(self.subscriptions.items()):
             new.subscriptions[name] = []
             for subscription in subscriptions:
                 new.subscriptions[name].append(subscription)
@@ -133,7 +133,7 @@ class EventCollection(Logging.InstanceLogger):
         new = self.copy()
 
         try:
-            for name, handlers in collection.subscriptions.items():
+            for name, handlers in list(collection.subscriptions.items()):
                 for handler in handlers:
                     self.subscribe(name, handler)
         except Exception:
@@ -151,7 +151,7 @@ class EventCollection(Logging.InstanceLogger):
         new = self.copy()
 
         try:
-            for name, handlers in collection.subscriptions.items():
+            for name, handlers in list(collection.subscriptions.items()):
                 for handler in handlers:
                     self.unsubscribe(name, handler)
         except Exception:

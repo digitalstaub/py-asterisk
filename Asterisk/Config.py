@@ -2,17 +2,17 @@
 Asterisk/Config.py: filesystem configuration reader.
 '''
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
+
+
 import os, sys
 
 #configparser has changed
 try:
     import configparser
 except:
-    import ConfigParser as configparser
+    import configparser as configparser
 
 import Asterisk
 
